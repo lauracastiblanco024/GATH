@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Vacantes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .sidebar {
+            background-color: #343a40;
+            color: white;
+            height: 100vh;
+            position: fixed;
+        }
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .sidebar .nav-link:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .sidebar .nav-link.active {
+            color: white;
+            background-color: #007bff;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            font-weight: bold;
+        }
+        .entity-attribute {
+            border-bottom: 1px solid #eee;
+            padding: 8px 0;
+        }
+        .entity-attribute:last-child {
+            border-bottom: none;
+        }
+        .btn-entity {
+            margin-bottom: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar d-flex flex-column flex-shrink-0 p-3" style="width: 250px;">
+            <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <span class="fs-4">Gestión de Vacantes</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="#vacantes" class="nav-link active" data-bs-toggle="tab">
+                        Vacantes
+                    </a>
+                </li>
+                <li>
+                    <a href="#postulaciones" class="nav-link" data-bs-toggle="tab">
+                        Postulaciones
+                    </a>
+                </li>
+                <li>
+                    <a href="#registro" class="nav-link" data-bs-toggle="tab">
+                        Registro
+                    </a>
+                </li>
+                <li>
+                    <a href="#experiencia" class="nav-link" data-bs-toggle="tab">
+                        Experiencia Laboral
+                    </a>
+                </li>
+                <li>
+                    <a href="#profesion" class="nav-link" data-bs-toggle="tab">
+                        Profesión
+                    </a>
+                </li>
+                <li>
+                    <a href="#horas" class="nav-link" data-bs-toggle="tab">
+                        Horas Extras
+                    </a>
+                </li>
+                <li>
+                    <a href="#paz" class="nav-link" data-bs-toggle="tab">
+                        Paz y Salvo
+                    </a>
+                </li>
+                <li>
+                    <a href="#rol" class="nav-link" data-bs-toggle="tab">
+                        Roles
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://via.placeholder.com/30" alt="Usuario" width="30" height="30" class="rounded-circle me-2">
+                    <strong>Admin</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="#">Perfil</a></li>
+                    <li><a class="dropdown-item" href="#">Configuración</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="tab-content">
+                <!-- Vacantes Tab -->
+                <div class="tab-pane fade show active" id="vacantes">
+                    <h2>Vacantes</h2>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    Lista de Vacantes
+                                    <button class="btn btn-sm btn-primary">Nueva Vacante</button>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nombre</th>
+                                                <th>Cargo</th>
+                                                <th>Salario</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Desarrollador Frontend</td>
+                                                <td>Junior</td>
+                                                <td>$2,500,000</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info">Ver</button>
+                                                    <button class="btn btn-sm btn-warning">Editar</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Analista de Datos</td>
+                                                <td>Senior</td>
+                                                <td>$4,000,000</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info">Ver</button>
+                                                    <button class="btn btn-sm btn-warning">Editar</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    Detalles de Vacante
+                                </div>
+                                <div class="card-body">
+                                    <div class="entity-attribute">
+                                        <strong>ID:</strong> 1
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Nombre:</strong> Desarrollador Frontend
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Descripción:</strong> Desarrollo de interfaces web usando React
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Salario:</strong> $2,500,000
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Experiencia:</strong> 1-2 años
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Cargo:</strong> Junior
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card mt-3">
+                                <div class="card-header">
+                                    Relación con Postulaciones
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>ID Postulación</th>
+                                                <th>Salario Hoja</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>101</td>
+                                                <td>$2,600,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>102</td>
+                                                <td>$2,700,000</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Postulaciones Tab -->
+                <div class="tab-pane fade" id="postulaciones">
+                    <h2>Postulaciones</h2>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    Lista de Postulaciones
+                                    <button class="btn btn-sm btn-primary">Nueva Postulación</button>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nombre Vacante</th>
+                                                <th>Candidato</th>
+                                                <th>Estado</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>101</td>
+                                                <td>Desarrollador Frontend</td>
+                                                <td>Juan Pérez</td>
+                                                <td><span class="badge bg-warning">En revisión</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info">Ver</button>
+                                                    <button class="btn btn-sm btn-warning">Editar</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>102</td>
+                                                <td>Analista de Datos</td>
+                                                <td>María Gómez</td>
+                                                <td><span class="badge bg-success">Aprobada</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info">Ver</button>
+                                                    <button class="btn btn-sm btn-warning">Editar</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    Detalles de Postulación
+                                </div>
+                                <div class="card-body">
+                                    <div class="entity-attribute">
+                                        <strong>ID:</strong> 101
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Nombre Vacante:</strong> Desarrollador Frontend
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Candidato:</strong> Juan Pérez
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Salario Hoja:</strong> $2,600,000
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registro Tab -->
+                <div class="tab-pane fade" id="registro">
+                    <h2>Registro de Candidatos</h2>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    Lista de Candidatos
+                                    <button class="btn btn-sm btn-primary">Nuevo Candidato</button>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Documento</th>
+                                                <th>Nombre</th>
+                                                <th>Apellido</th>
+                                                <th>Teléfono</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>123456789</td>
+                                                <td>Juan</td>
+                                                <td>Pérez</td>
+                                                <td>3001234567</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info">Ver</button>
+                                                    <button class="btn btn-sm btn-warning">Editar</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>987654321</td>
+                                                <td>María</td>
+                                                <td>Gómez</td>
+                                                <td>3107654321</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info">Ver</button>
+                                                    <button class="btn btn-sm btn-warning">Editar</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    Detalles del Candidato
+                                </div>
+                                <div class="card-body">
+                                    <div class="entity-attribute">
+                                        <strong>Documento:</strong> 123456789
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Nombres:</strong> Juan Carlos
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Apellidos:</strong> Pérez López
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Documento:</strong> C.C. 123456789
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Estado Civil:</strong> Soltero
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Ciudad:</strong> Bogotá
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Dirección:</strong> Calle 123 #45-67
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Teléfono:</strong> 3001234567
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Tipo Vivienda:</strong> Arrendada
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Estrato:</strong> 3
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experiencia Laboral Tab -->
+                <div class="tab-pane fade" id="experiencia">
+                    <h2>Experiencia Laboral</h2>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    Experiencia de Candidatos
+                                    <button class="btn btn-sm btn-primary">Agregar Experiencia</button>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Empresa</th>
+                                                <th>Cargo</th>
+                                                <th>Jefe</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Tech Solutions</td>
+                                                <td>Desarrollador Junior</td>
+                                                <td>Carlos Martínez</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info">Ver</button>
+                                                    <button class="btn btn-sm btn-warning">Editar</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Data Analytics</td>
+                                                <td>Analista de Datos</td>
+                                                <td>Laura González</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info">Ver</button>
+                                                    <button class="btn btn-sm btn-warning">Editar</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    Detalles de Experiencia
+                                </div>
+                                <div class="card-body">
+                                    <div class="entity-attribute">
+                                        <strong>ID:</strong> 1
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Empresa:</strong> Tech Solutions
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Jefe:</strong> Carlos Martínez
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Teléfono:</strong> 6012345678
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Cargo:</strong> Desarrollador Junior
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Actividades:</strong> Desarrollo de aplicaciones web usando React y Node.js
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profesión Tab -->
+                <div class="tab-pane fade" id="profesion">
+                    <h2>Profesiones</h2>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    Lista de Profesiones
+                                    <button class="btn btn-sm btn-primary">Nueva Profesión</button>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nombre</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Ingeniero de Sistemas</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info">Ver</button>
+                                                    <button class="btn btn-sm btn-warning">Editar</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Analista de Datos</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info">Ver</button>
+                                                    <button class="btn btn-sm btn-warning">Editar</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    Detalles de Profesión
+                                </div>
+                                <div class="card-body">
+                                    <div class="entity-attribute">
+                                        <strong>ID:</strong> 1
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Nombre:</strong> Ingeniero de Sistemas
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Horas Extras Tab -->
+                <div class="tab-pane fade" id="horas">
+                    <h2>Horas Extras</h2>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    Registro de Horas Extras
+                                    <button class="btn btn-sm btn-primary">Nuevo Registro</button>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Descripción</th>
+                                                <th>Fecha</th>
+                                                <th>Horas</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Proyecto urgente</td>
+                                                <td>2023-05-15</td>
+                                                <td>4</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info">Ver</button>
+                                                    <button class="btn btn-sm btn-warning">Editar</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Reunión cliente</td>
+                                                <td>2023-05-20</td>
+                                                <td>2</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info">Ver</button>
+                                                    <button class="btn btn-sm btn-warning">Editar</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    Detalles de Horas Extras
+                                </div>
+                                <div class="card-body">
+                                    <div class="entity-attribute">
+                                        <strong>ID:</strong> 1
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Descripción:</strong> Proyecto urgente
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Fecha:</strong> 15/05/2023
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Horas:</strong> 4
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paz y Salvo Tab -->
+                <div class="tab-pane fade" id="paz">
+                    <h2>Paz y Salvo</h2>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    Documentos Paz y Salvo
+                                    <button class="btn btn-sm btn-primary">Nuevo Documento</button>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Descripción</th>
+                                                <th>Firma</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Fin de contrato</td>
+                                                <td>Juan Pérez</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info">Ver</button>
+                                                    <button class="btn btn-sm btn-warning">Editar</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Renuncia voluntaria</td>
+                                                <td>María Gómez</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info">Ver</button>
+                                                    <button class="btn btn-sm btn-warning">Editar</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    Detalles de Paz y Salvo
+                                </div>
+                                <div class="card-body">
+                                    <div class="entity-attribute">
+                                        <strong>ID:</strong> 1
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Descripción:</strong> Fin de contrato
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Firma:</strong> Juan Pérez
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Roles Tab -->
+                <div class="tab-pane fade" id="rol">
+                    <h2>Roles</h2>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    Lista de Roles
+                                    <button class="btn btn-sm btn-primary">Nuevo Rol</button>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nombre</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Administrador</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info">Ver</button>
+                                                    <button class="btn btn-sm btn-warning">Editar</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Reclutador</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info">Ver</button>
+                                                    <button class="btn btn-sm btn-warning">Editar</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    Detalles de Rol
+                                </div>
+                                <div class="card-body">
+                                    <div class="entity-attribute">
+                                        <strong>ID:</strong> 1
+                                    </div>
+                                    <div class="entity-attribute">
+                                        <strong>Nombre:</strong> Administrador
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Activar el primer tab al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            var firstTab = new bootstrap.Tab(document.querySelector('.nav-link.active'));
+            firstTab.show();
+        });
+    </script>
+</body>
+</html>
